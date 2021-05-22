@@ -18,6 +18,9 @@ class Id extends Equatable {
     return right(Id._(id));
   }
 
+  static Id createOrThrow(String id) =>
+      tryCreate(id).fold((l) => throw Exception(), (r) => r);
+
   @override
   List<Object?> get props => [value];
 }

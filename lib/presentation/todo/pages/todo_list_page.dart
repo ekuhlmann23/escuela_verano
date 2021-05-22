@@ -1,8 +1,4 @@
 import 'package:escuela_verano/domain/todo/entities/todo_list.dart';
-import 'package:escuela_verano/domain/todo/value_objects/id.dart';
-import 'package:escuela_verano/domain/todo/value_objects/item_description.dart';
-import 'package:escuela_verano/domain/todo/value_objects/list_item.dart';
-import 'package:escuela_verano/domain/todo/value_objects/list_title.dart';
 import 'package:escuela_verano/presentation/todo/providers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

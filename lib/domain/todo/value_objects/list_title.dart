@@ -22,6 +22,9 @@ class ListTitle extends Equatable {
     return right(ListTitle._(title));
   }
 
+  static ListTitle createOrThrow(String title) =>
+      tryCreate(title).fold((l) => throw Exception(), (r) => r);
+
   @override
   List<Object?> get props => [value];
 }

@@ -19,6 +19,9 @@ class ItemDescription extends Equatable {
     return right(ItemDescription._(description));
   }
 
+  static ItemDescription createOrThrow(String description) =>
+      tryCreate(description).fold((l) => throw Exception(), (r) => r);
+
   @override
   List<Object?> get props => [value];
 }
