@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -9,12 +10,13 @@ class ItemDescription extends Equatable {
 
   ItemDescription._(this.value);
 
-  static ItemDescription tryCreate(String description) {
+  static Either<ItemDescriptionValidationError, ItemDescription> tryCreate(
+      String description) {
     if (description.length > maxLength) {
-      throw Exception();
+      left(ItemDescriptionValidationError.tooLong(maxLength));
     }
 
-    return ItemDescription._(description);
+    return right(ItemDescription._(description));
   }
 
   @override
