@@ -1,8 +1,9 @@
+import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'item_description.freezed.dart';
 
-class ItemDescription {
+class ItemDescription extends Equatable {
   final String value;
   static const maxLength = 500;
 
@@ -15,6 +16,9 @@ class ItemDescription {
 
     return ItemDescription._(description);
   }
+
+  @override
+  List<Object?> get props => [value];
 }
 
 @Freezed()

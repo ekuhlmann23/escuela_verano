@@ -1,9 +1,10 @@
 import 'package:dartz/dartz.dart';
+import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'list_title.freezed.dart';
 
-class ListTitle {
+class ListTitle extends Equatable {
   final String value;
   static const maxLength = 30;
 
@@ -20,6 +21,9 @@ class ListTitle {
 
     return right(ListTitle._(title));
   }
+
+  @override
+  List<Object?> get props => [value];
 }
 
 @Freezed()
