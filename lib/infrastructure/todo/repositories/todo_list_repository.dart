@@ -19,4 +19,11 @@ class TodoListRepository implements ITodoListRepository {
         .map((doc) => doc.data())
         .toList();
   }
+
+  @override
+  Stream<List<TodoList>> getAllStream() {
+    return _todoListsCollection
+        .snapshots()
+        .map((snapshot) => snapshot.docs.map((doc) => doc.data()).toList());
+  }
 }

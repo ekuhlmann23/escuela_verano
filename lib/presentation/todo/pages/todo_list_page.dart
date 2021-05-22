@@ -26,7 +26,13 @@ class _States extends ConsumerWidget {
     return state.map(
       loading: (_) => CircularProgressIndicator(),
       data: (data) => _TodoListView(items: data.items),
-      error: (e) => Text(e.friendlyErrorMessage ?? 'Something went wrong :('),
+      error: (e) => Text(
+        e.friendlyErrorMessage ?? 'Something went wrong :(',
+        style: TextStyle(
+          color: Colors.red,
+          fontSize: 18,
+        ),
+      ),
     );
   }
 }
