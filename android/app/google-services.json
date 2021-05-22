@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "136612231319",
+    "project_id": "escuela-de-verano",
+    "storage_bucket": "escuela-de-verano.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:136612231319:android:cf6a08170a7b117ddad1d2",
+        "android_client_info": {
+          "package_name": "com.example.escuela_verano"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "136612231319-h7n294cc2339p330aqvoh1mvjkd0p63p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBO9Z3XD6upe5Tsu8Yq7iB2FPawmMostsw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "136612231319-h7n294cc2339p330aqvoh1mvjkd0p63p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

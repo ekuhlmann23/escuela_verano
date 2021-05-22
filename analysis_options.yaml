@@ -1,0 +1,10 @@
+include: package:pedantic/analysis_options.1.8.0.yaml
+
+analyzer:
+  exclude: [build/**, lib/routes/*.gr.dart, '**/*.g.dart', '**/*.freezed.dart']
+  strong-mode:
+    implicit-casts: false
+
+linter:
+  rules:
+    - camel_case_types
