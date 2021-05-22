@@ -14,7 +14,8 @@ class HomePage extends StatelessWidget {
             children: [
               Text(
                 'Bienvenidos al taller!',
-                style: TextStyle(fontSize: 28, color: Colors.blue),
+                style: TextStyle(
+                    fontSize: 28, color: Theme.of(context).accentColor),
               ),
               SizedBox(height: 20),
               Text('22 de mayo - 2021'),
@@ -23,7 +24,14 @@ class HomePage extends StatelessWidget {
                 onPressed: () {
                   AutoRouter.of(context).navigate(TodoListRoute());
                 },
-                child: Text('Todo lists'),
+                child: Text(
+                  'Todo lists',
+                  style: TextStyle(color: Colors.black),
+                ),
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                  Theme.of(context).accentColor,
+                )),
               )
             ],
           ),
