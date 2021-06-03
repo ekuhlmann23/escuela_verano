@@ -1,4 +1,3 @@
-import 'package:escuela_verano/presentation/core/widgets/app_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -10,14 +9,16 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text('Home')),
       body: Container(
-        child: Center(
-          child: Text(
-            'Escuela de verano',
-            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Center(
+            child: Text(
+              'Taller escuela\nde verano',
+              style: Theme.of(context).textTheme.headline2,
+            ),
           ),
         ),
       ),
-      bottomNavigationBar: AppNavBar.navBar(context, NavBarPages.home.index),
     );
   }
 }

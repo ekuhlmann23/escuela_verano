@@ -30,7 +30,10 @@ class _ListNameField extends StatelessWidget {
     return TextFormField(
       autofocus: true,
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      decoration: InputDecoration(labelText: 'List name'),
+      decoration: InputDecoration(
+        labelText: 'List name',
+        border: OutlineInputBorder(),
+      ),
       validator: (listName) {
         final result = ListName.tryCreate(listName);
         return result.fold(
@@ -51,7 +54,7 @@ class _Form extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.end,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         _ListNameField(),
@@ -68,7 +71,7 @@ class _Error extends StatelessWidget {
     return Center(
       child: Text(
         'Something went wrong when adding your new todo list.\nPlease try again later.',
-        style: TextStyle(color: Colors.red),
+        style: TextStyle(color: Theme.of(context).errorColor),
       ),
     );
   }
@@ -101,7 +104,7 @@ class _SubmitButton extends HookWidget {
   Widget build(BuildContext context) {
     final state = useProvider(todoAddNotifierProvider);
     return ElevatedButton(
-      child: Text('Add list'),
+      child: Text('Add'),
       onPressed: state.validate()
           ? () {
               context.read(todoAddNotifierProvider.notifier).createList();

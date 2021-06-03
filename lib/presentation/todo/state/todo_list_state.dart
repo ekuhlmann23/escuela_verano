@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:escuela_verano/domain/todo/entities/todo_list.dart';
 import 'package:escuela_verano/application/todo/use_cases/i_todo_use_case.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -14,9 +16,10 @@ class TodoListState with _$TodoListState {
 
 class TodoListNotifier extends StateNotifier<TodoListState> {
   final ITodoUseCase _useCase;
+  late final StreamSubscription _streamSubscription;
 
   TodoListNotifier(this._useCase) : super(TodoListState.loading()) {
-    _useCase.getTodoListsStream().listen((updatedData) {
+    _streamSubscription = _useCase.getTodoListsStream().listen((updatedData) {
       state.maybeWhen(
           data: (d) {
             state = TodoListState.loading();
@@ -37,5 +40,11 @@ class TodoListNotifier extends StateNotifier<TodoListState> {
     } catch (e) {
       state = TodoListState.error('Failed to load todo lists.');
     }
+  }
+
+  @override
+  void dispose() async {
+    await _streamSubscription.cancel();
+    super.dispose();
   }
 }

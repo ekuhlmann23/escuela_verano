@@ -151,7 +151,7 @@ class _ItemsListView extends StatelessWidget {
         itemBuilder: (context, index) {
           return ListTile(
             leading:
-                ItemCompletedCheckbox(itemStates: itemStates, index: index),
+                _ItemCompletedCheckbox(itemStates: itemStates, index: index),
             title: ItemBodyField(itemStates: itemStates, index: index),
             trailing: IconButton(
               icon: Icon(Icons.delete),
@@ -168,17 +168,19 @@ class _ItemsListView extends StatelessWidget {
   }
 }
 
-class ItemCompletedCheckbox extends StatelessWidget {
+class _ItemCompletedCheckbox extends StatelessWidget {
   final List<TodoItemState> itemStates;
   final int index;
 
-  const ItemCompletedCheckbox(
+  const _ItemCompletedCheckbox(
       {Key? key, required this.itemStates, required this.index})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Checkbox(
+      activeColor: Theme.of(context).primaryTextTheme.bodyText1?.color,
+      checkColor: Theme.of(context).accentTextTheme.bodyText1?.color,
       value: itemStates[index].completed,
       onChanged: (completed) => context
           .read(todoEditNotifierProvider.notifier)
@@ -230,30 +232,23 @@ class _Buttons extends StatelessWidget {
       children: [
         ElevatedButton(
           style: ButtonStyle(
-              backgroundColor:
-                  MaterialStateProperty.all<Color>(Colors.redAccent.shade100)),
+              backgroundColor: MaterialStateProperty.all<Color>(
+                  Theme.of(context).errorColor)),
           onPressed: () {
             context.read(todoEditNotifierProvider.notifier).delete();
           },
           child: Text(
             'Delete',
-            style: TextStyle(color: Colors.black),
           ),
         ),
         SizedBox(width: 20),
         ElevatedButton(
-          style: ButtonStyle(
-              backgroundColor:
-                  MaterialStateProperty.all<Color>(Colors.tealAccent)),
           onPressed: dataState.validate()
               ? () {
                   context.read(todoEditNotifierProvider.notifier).save();
                 }
               : null,
-          child: Text(
-            'Save list',
-            style: TextStyle(color: Colors.black),
-          ),
+          child: Text('Save'),
         ),
       ],
     );
@@ -270,7 +265,7 @@ class _Error extends StatelessWidget {
     return Center(
       child: Text(
         friendlyMessage ?? 'Something went wrong. Please try again later.',
-        style: TextStyle(color: Colors.red),
+        style: TextStyle(color: Theme.of(context).errorColor),
       ),
     );
   }

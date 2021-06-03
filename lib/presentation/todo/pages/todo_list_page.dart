@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:escuela_verano/domain/todo/entities/todo_list.dart';
 import 'package:escuela_verano/presentation/providers.dart';
 import 'package:escuela_verano/presentation/routes/routes.gr.dart';
-import 'package:escuela_verano/presentation/core/widgets/app_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -31,7 +30,6 @@ class TodoListPage extends StatelessWidget {
           AutoRouter.of(context).navigate(TodoAddRoute());
         },
       ),
-      bottomNavigationBar: AppNavBar.navBar(context, NavBarPages.todo.index),
     );
   }
 }
@@ -50,7 +48,7 @@ class _Error extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       errorMessage ?? "An unhandled error occured",
-      style: TextStyle(color: Colors.red),
+      style: TextStyle(color: Theme.of(context).errorColor),
     );
   }
 }
